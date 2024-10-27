@@ -1,12 +1,12 @@
 const nodemailer = require("nodemailer");
-
+require('dotenv').config
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   
   secure: false, 
   auth: {
     user: "21052267@kiit.ac.in",
-    pass: "einanlvocpyjylmu",
+    pass: process.env.EMAIL_PASSWORD,
   },
 });
 

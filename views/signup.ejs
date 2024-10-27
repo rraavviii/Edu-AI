@@ -7,7 +7,6 @@
     <style>
         /* Your existing styles */
         body, html {
-            
             margin: 0;
             padding: 0;
             height: 100%;
@@ -20,19 +19,17 @@
         }
 
         .background {
-    background-image: url('/images/bg3.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    animation: fadeInBackground 2s ease-in-out;
-    /* background-color: #000; Fallback color */
-}
-
+            background-image: url('/images/bg3.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            animation: fadeInBackground 2s ease-in-out;
+        }
 
         .content, .second-content {
             max-width: 600px;
@@ -46,8 +43,9 @@
         .content {
             display: block;
             height: 50%;
-            background: rgba(0, 0, 0, 0.5); /* Transparent background */
+            background: rgba(0, 0, 0, 0.5);
             animation: slideInUp 1.5s ease-out;
+            text-align: center; /* Centering text in content */
         }
 
         h1 {
@@ -102,6 +100,21 @@
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
         }
 
+        .login {
+            font-size: 1em;
+            margin-top: 1em;
+            animation: fadeInText 3s ease-in-out;
+        }
+
+        .login a {
+            color: #0071eb;
+            text-decoration: none;
+        }
+
+        .login a:hover {
+            color: #005bb5;
+        }
+
         .second-content {
             background: #fff;
             color: #333;
@@ -111,63 +124,6 @@
             max-width: 500px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
             border-radius: 8px;
-        }
-
-        .second-content h1 {
-            color: #333;
-            font-size: 2em;
-            margin-bottom: 0.5em;
-        }
-
-        .second-content p {
-            font-size: 1em;
-            margin-bottom: 1.5em;
-            color: #666;
-        }
-
-        .input-field {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 1em;
-            font-size: 1em;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        .input-field:focus {
-            border-color: #333;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-            outline: none;
-        }
-
-        .forgot-password {
-            display: block;
-            margin-bottom: 1.5em;
-            color: #0071eb;
-            text-decoration: none;
-            font-size: 0.9em;
-            transition: color 0.3s ease-in-out;
-        }
-
-        .forgot-password:hover {
-            color: #005bb5;
-        }
-
-        .button {
-            width: 100%;
-            padding: 15px;
-            background-color: #e50914;
-            color: #fff;
-            border: none;
-            font-size: 1em;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: background-color 0.3s ease-in-out;
-        }
-
-        .button:hover {
-            background-color: #b20710;
         }
 
         /* Animations */
@@ -189,30 +145,24 @@
 </head>
 <body>
 
-   
-    <!-- Background for first page -->
     <div class="background"></div>
 
-    <!-- Form starts here -->
     <form id="signupForm" action="/signup" method="post">
-        <!-- First page content -->
         <div class="content">
-
             <h1>Your Journey to Knowledge Starts Here!</h1>
             <p>Ready to start? Elevate Your Education with EduAI!</p>
             <div class="input-group">
                 <input class="useremail" type="email" name="email" placeholder="Email address" required>
                 <button type="button" onclick="showSecondPage()">Get Started</button>
             </div>
+            <p class="login">Already have an account? <a href="login">Login</a></p>
         </div>
 
-        <!-- Second page content -->
         <div class="second-content container">
             <h1>Let's Get Acquainted!</h1>
             <p>Enter your password and start learning.</p>
             <input type="text" name="name" placeholder="Name" class="input-field" required>
             <input type="password" name="password" class="input-field" placeholder="Enter your password" required>
-           
             <button type="submit" class="button">Sign Up</button>
         </div>
     </form>
