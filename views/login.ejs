@@ -9,6 +9,9 @@
 
 </head>
 <body>
+    <% if (locals.success_msg) { %>
+        <div class="success"><%= locals.success_msg %></div>
+    <% } %>
     <div class="container">
         <h1>Secure Your Learning Portal</h1>
         <p>Choose a unique username and a secure password</p>

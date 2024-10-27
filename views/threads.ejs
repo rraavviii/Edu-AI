@@ -355,8 +355,6 @@
 
 
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -375,26 +373,37 @@
 
     <div class="container">
         <h1><a href="topic">Create Threads</a></h1>
-        <button class="show-messages-btn" onclick="showMessages()">Show All Threads</button>
+        <!-- <button class="show-messages-btn" onclick="showMessages()">Show All Threads</button> -->
         <div class="threads-container">
             <h1>All the threads are here</h1>
             <% messages.forEach(function(info) { %>
                 <div class="thread">
-                    <h2>Post by: <%= info.user.name %></h2>
-                    <p><%= info.topic %></p>
-                    <p><%= info.content %></p>
+                    <div class="thread-header">
+                        <h2>Posted by: <%= info.user.name %></h2>
+                        <span class="post-time"><%= new Date(info.createdAt).toLocaleString() %></span>
+                    </div>
+                    <div class="thread-content">
+                        <p class="topic"><%= info.topic %></p>
+                        <p><%= info.content %></p>
+                    </div>
                     <% if (info.document) { %>
-                        <p>Uploaded Document: <a href="/uploads/<%= info.document %>" target="_blank"><a href="chat"><img src="./images/documents.png" alt="" class="small-icon"></a></a></p>
+                        <div class="thread-doc">
+                            <a href="localhost:3000/uploads/<%= info.document %>" target="_blank" >
+                                <img src="./images/documents.png" alt="Document" class="small-icon">
+                            </a>
+                        </div>
                     <% } %>
                     <% if (info.summary) { %>
                         <p><strong>Summary:</strong> <%= info.summary %></p>
                     <% } %>
-                    <button type="button" class="infoid-btn" data-query-id="<%= info._id %>">Log Query ID</button>
-                    <button class="flag-reply-btn">flagged reply</button>
+                    <div class="thread-actions">
+                        <button class="infoid-btn" id="sum" data-query-id="<%= info._id %>">Summary</button>
+                        <button class="flag-reply-btn">Flagged Reply</button>
+                    </div>
                     <form class="reply-form" action="/reply" method="post">
                         <input type="hidden" name="topicId" value="<%= info._id %>">
-                        <i class="fas fa-comment" onclick="toggleInput(this)"> reply</i>
-                        <input type="text" name="replycontent" placeholder="Write your answer..." class="hidden">
+                        <i class="fas fa-comment" onclick="toggleInput(this)"> Reply</i>
+                        <input type="text" name="replycontent" placeholder="Write your reply..." class="hidden">
                         <input type="submit" value="Post" class="hidden">
                     </form>
                     <button class="show-replies-btn" onclick="toggleReplies(this)">Show Replies</button>

@@ -11,7 +11,9 @@ const replySchema = new mongoose.Schema({
 
    
 
-    querry: { type: mongoose.Schema.Types.ObjectId, ref: 'info' },
+    querry: { 
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'info' },
 
     date: {
         type: Date,

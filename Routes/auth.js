@@ -5,7 +5,9 @@ const infomodel = require('../model/info');
 const bcrypt = require('bcrypt');
 const jwt=require('jsonwebtoken')
 const key=require('../helper/generatekey')
+const nodemailer = require("nodemailer");
 
+const {sendMail}=require('../helper/sendmail')
 router.get('/', (req, res) => {
     res.render('signup');
 });
@@ -25,12 +27,21 @@ router.post('/signup',async function(req,res){
                     password: hash,
                 });
                 let token = jwt.sign({ email: email, userId: user._id }, key);
+                
                 res.cookie('token', token);
+                sendMail(
+                    email,
+                    'edu AI',
+                    `Hi ${name},\n\nThank you for joining Edu-AI community`,
+                    
+                );
                 res.redirect('/login');
             });
+            
+            
         });
     });
-    
+   
     router.get('/login', (req, res) => {
         res.render('login');
     });

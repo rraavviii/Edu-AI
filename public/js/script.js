@@ -26,12 +26,15 @@ function toggleReplies(button) {
 
 
 
-
+// const usermail=document.querySelector('.useremail')
+//     usermail.addEventListener('click',function(){
+//         console.log('email is clicked')
+//     })
 
 
 document.addEventListener('DOMContentLoaded', function() {
     const infoIdButtons = document.querySelectorAll('.infoid-btn');
-
+    
     infoIdButtons.forEach(button => {
         button.addEventListener('click', function() {
             const queryId = button.getAttribute('data-query-id');

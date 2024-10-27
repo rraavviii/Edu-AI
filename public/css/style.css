@@ -1,117 +1,203 @@
- body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    color: #333;
+/* Reset */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    /* background-color: #2980b9; */
 }
-h1 {
-    text-align: center;
-    margin-top: 20px;
-    color: #333;
+
+body {
+    font-family: 'Roboto', sans-serif;
+   
+    color: #444;
 }
+
 a {
     text-decoration: none;
-    color: #0066cc;
+    color: #3498db;
 }
+
 .container {
     width: 80%;
     margin: 0 auto;
-    padding: 20px;
+    padding: 30px 20px;
+    
 }
+
+h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #100d0d;
+}
+
 .show-messages-btn, .show-replies-btn {
     display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
+    margin: 0 auto 20px;
+    padding: 12px 24px;
+    background-color: #338dcc;
+    color: white;
     border: none;
     border-radius: 4px;
-    background-color: #0066cc;
-    color: #fff;
     cursor: pointer;
-    text-align: center;
+    transition: background-color 0.3s ease;
 }
-.threads-container, .replies-container {
-    display: none;
+
+.show-messages-btn:hover, .show-replies-btn:hover {
+    background-color: #4484ae;
 }
+
+.threads-container {
+    margin-top: 20px;
+}
+
 .thread {
-    background-color: #fff;
+    background-color: rgb(186, 194, 126);
     padding: 20px;
-    border-radius: 8px;
     margin-bottom: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
 }
-.thread h2 {
-    margin: 0 0 10px;
+
+.thread:hover {
+    transform: translateY(-5px);
+}
+
+.thread-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.thread-header h2 {
+    font-size: 1.5rem;
     color: #333;
 }
-.thread p {
-    margin: 0 0 10px;
-    line-height: 1.6;
+
+.post-time {
+    font-size: 0.875rem;
+    color: #777;
 }
+
+.thread-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.thread-doc {
+    margin: 15px 0;
+}
+
+.small-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.thread-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.thread-actions button {
+    padding: 8px 16px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.thread-actions button:hover {
+    background-color: #2980b9;
+}
+
 .reply-form {
     margin-top: 10px;
 }
+
 .reply-form input[type="text"] {
     width: calc(100% - 100px);
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     margin-bottom: 10px;
-}
-.reply-form input[type="submit"] {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    background-color: #0066cc;
-    color: #fff;
-    cursor: pointer;
+    transition: border-color 0.2s ease;
 }
 
-.small-icon {
-    width: 50px;  
-    height: 50px; 
+.reply-form input[type="text"]:focus {
+    border-color: #3498db;
 }
-.logout-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background-color: #f56565; 
-    border-radius: 0.375rem; 
-    padding: 0.5rem 1rem;
+
+.reply-form input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #3498db;
     color: white;
-    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
     transition: background-color 0.3s ease;
 }
-.logout-btn:hover {
-    background-color: #c53030;
-}
-.container {
-    margin-top: 60px; 
+
+.reply-form input[type="submit"]:hover {
+    background-color: #2980b9;
 }
 
 .reply {
     margin-left: 20px;
     padding: 10px;
-    border-left: 2px solid #0066cc;
-    background-color: #f9f9f9;
+    border-left: 3px solid #3498db;
+    background-color: #f0f8ff;
     border-radius: 4px;
 }
+
 .reply p {
     margin: 0;
+    font-size: 0.95rem;
     color: #333;
 }
+
 .reply strong {
-    color: #0066cc;
+    color: #3498db;
 }
+
 .fas.fa-comment {
     cursor: pointer;
-    color: #0066cc;
+    color: #3498db;
+    margin-right: 10px;
 }
+
 .hidden {
     display: none;
-}   
+}
 
+.logout-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #e74c3c;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
 
+.topic{
+    font-weight: bold;
+}
+
+.logout-btn:hover {
+    background-color: #c0392b;
+}
+
+#sum{
+    background-color: #124215;
+}
 
 
 /* 

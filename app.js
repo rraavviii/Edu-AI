@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const port = 3030;
 const usermodel = require('./model/user');
 const infomodel = require('./model/info');
 const cookieParser = require('cookie-parser');
@@ -19,20 +18,13 @@ const dotenv=require('dotenv')
 dotenv.config()
 
 mongoose.connect(process.env.Mongo_uri)
-
-// mongoose.connect(process.env.Mongo_uri, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//     ssl: true, // Use SSL if required
-//     sslValidate: false // Sometimes necessary for local testing
-// }).then(() => console.log('MongoDB connected successfully'))
-//   .catch(err => console.error('MongoDB connection error:', err));
-
+.then(()=> console.log("Database Connected"))
+.catch(err =>console.log("MongoDB connection Error : ",err ))
 
 
 const userRouter=require('./Routes/auth')
 const topicRouter=require('./Routes/topic')
-// Multer setup
+
 
 
 app.use(express.json());
@@ -44,14 +36,13 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 
 
-
 app.use('/', userRouter)
 app.use('/',topicRouter)
 
 
-app.get('/profile', isLoggedin, (req, res) => {
-    res.render('profile');
-});
+// app.get('/profile', isLoggedin, (req, res) => {
+//     res.render('profile');
+// });
 
 
 
@@ -118,33 +109,15 @@ app.post('/reply', isLoggedin, async (req, res) => {
     user.reply.push(reply._id);
     await user.save();
 
-
-
     res.redirect('/threads');
 });
 
 
-// app.post('/log-query-id', (req, res) => {
-//     const { queryId } = req.body;
 
-//     const pythonProcess = spawn('python', ['log_query.py', queryId]);
-
-//     pythonProcess.stdout.on('data', (data) => {
-//         console.log(`Python output: ${data.toString()}`);
-//     });
-
-//     pythonProcess.stderr.on('data', (data) => {
-//         console.error(`Python error: ${data.toString()}`);
-//     });
-
-//     pythonProcess.on('close', (code) => {
-//         console.log(`Python process exited with code ${code}`);
-//         res.json({ message: 'Query ID logged successfully', queryId });
-//     });
-// });
 
 
 app.get('/chat',(req,res)=>{
+  
     res.render('chat')
 })
 
@@ -179,7 +152,9 @@ app.post('/log-query-id', async (req, res) => {
 
 
 const moderationApi = new ModerationApi({
-    key: "",
+    key: process.env.MODERATION_API,
+
+
   });
   
   app.post('/flagged-replies', async (req, res) => {
@@ -254,6 +229,6 @@ function isLoggedin(req, res, next) {
     });
 }
 
-app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+app.listen(process.env.PORT, () => {
+    console.log(`Server running on port ${process.env.PORT}`);
 });
