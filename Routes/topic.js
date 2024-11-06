@@ -12,7 +12,6 @@ router.get('/topic', (req, res) => {
     res.render('topic');
 });
 
-
 const storage = multer.diskStorage({
     destination: './uploads/',
     filename: function (req, file, cb) {
