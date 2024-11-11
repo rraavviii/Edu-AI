@@ -74,6 +74,7 @@ app.use('/',topicRouter)
 
 app.get('/threads', isLoggedin, async (req, res) => {
     let user = await usermodel.findOne({ email: req.user.email }).populate('infos');
+    
     let messages = await infomodel.find().populate('user').populate({
         path: 'replies',
         populate: {
