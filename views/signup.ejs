@@ -153,7 +153,7 @@
             <p>Ready to start? Elevate Your Education with EduAI!</p>
             <div class="input-group">
                 <input class="useremail" type="email" name="email" placeholder="Email address" required>
-                <button type="button><a href="login">Get Started</a></button>
+                  <button type="button" onclick="showSecondPage()">Get Started</button>
               
             </div>
             <p class="login">Already have an account? <a href="login">Login</a></p>
@@ -170,9 +170,7 @@
 
     <script>
         function showSecondPage() {
-            document.querySelector('.background').style.display = 'none';
-            document.querySelector('.content').style.display = 'none';
-            document.querySelector('.second-content').style.display = 'block';
+           
         }
     </script>
 
