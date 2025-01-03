@@ -164,12 +164,15 @@
             <p>Enter your password and start learning.</p>
             <input type="text" name="name" placeholder="Name" class="input-field" required>
             <input type="password" name="password" class="input-field" placeholder="Enter your password" required>
-            <button type="submit" class="button">Sign Up</button>
+            <button type="submit" class="button" onClick="showLoginpage()">Sign Up</button>
         </div>
     </form>
 
     <script>
         function showSecondPage() {
+           window.location.href = '/login';
+        }
+function showLoginpage() {
            window.location.href = '/login';
         }
     </script>
