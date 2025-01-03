@@ -169,9 +169,15 @@
     </form>
 
     <script>
-        function showSecondPage() {
-           window.location.href = '/login';
+       function showSecondPage() {
+        var email = document.getElementById('email').value;
+        if (email === "") {
+            alert("Please enter your email address.");
+            return false;
         }
+        document.querySelector('.content').style.display = 'none';
+        document.querySelector('.second-content').style.display = 'block';
+    }
 
     </script>
 
