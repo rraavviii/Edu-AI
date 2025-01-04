@@ -4,173 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Journey to Knowledge</title>
-    <style>
-        /* Your existing styles */
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            font-family: Arial, sans-serif;
-            color: #fff;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .background {
-            background-image: url('/images/bg3.jpg');
-            background-size: cover;
-            background-position: center;
-            height: 100%;
-            width: 100%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            animation: fadeInBackground 2s ease-in-out;
-        }
-
-        .content, .second-content {
-            max-width: 600px;
-            padding: 30px;
-            border-radius: 8px;
-            box-sizing: border-box;
-            text-align: left;
-            display: none;
-        }
-
-        .content {
-            display: block;
-            height: 50%;
-            background: rgba(0, 0, 0, 0.5);
-            animation: slideInUp 1.5s ease-out;
-            text-align: center; /* Centering text in content */
-        }
-
-        h1 {
-            font-size: 2.5em;
-            animation: fadeInText 1.5s ease-in-out;
-        }
-
-        p {
-            font-size: 1.2em;
-            margin-bottom: 1.5em;
-            animation: fadeInText 2s ease-in-out;
-        }
-
-        .input-group {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 1.5em;
-            animation: fadeInText 2.5s ease-in-out;
-        }
-
-        .input-group input {
-            padding: 10px;
-            font-size: 1em;
-            border: none;
-            border-radius: 4px 0 0 4px;
-            outline: none;
-            flex: 1;
-            max-width: 300px;
-            transition: all 0.3s ease;
-        }
-
-        .input-group button {
-            padding: 10px 20px;
-            font-size: 1em;
-            border: none;
-            border-radius: 0 4px 4px 0;
-            background-color: #000;
-            color: #fff;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .input-group input::placeholder {
-            color: #777;
-        }
-
-        .input-group button:hover {
-            background-color: #333;
-        }
-
-        .input-group input:focus {
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-        }
-
-        .login {
-            font-size: 1em;
-            margin-top: 1em;
-            animation: fadeInText 3s ease-in-out;
-        }
-
-        .login a {
-            color: #0071eb;
-            text-decoration: none;
-        }
-
-        .login a:hover {
-            color: #005bb5;
-        }
-
-        .second-content {
-            background: #fff;
-            color: #333;
-            animation: fadeInText 2s ease-in-out;
-            text-align: left;
-            display: none;
-            max-width: 500px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-            border-radius: 8px;
-        }
-
-        /* Animations */
-        @keyframes fadeInBackground {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        @keyframes slideInUp {
-            0% { transform: translateY(50px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
-        }
-
-        @keyframes fadeInText {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-    </style>
+    <link rel="stylesheet" href="./css/signup.css">
+   
 </head>
 <body>
 
+   
+    <!-- Background for first page -->
     <div class="background"></div>
 
+    <!-- Form starts here -->
     <form id="signupForm" action="/signup" method="post">
+        <!-- First page content -->
         <div class="content">
+
             <h1>Your Journey to Knowledge Starts Here!</h1>
             <p>Ready to start? Elevate Your Education with EduAI!</p>
             <div class="input-group">
-                <input class="useremail" type="email" name="email" placeholder="Email address" required>
-                  <button type="button" onclick="showSecondPage()">Get Started</button>
-              
+                <input type="email" id="email" name="email" placeholder="Email address" required>
+
+                <button type="button" onclick="showSecondPage()">Get Started</button>
+                
             </div>
-            <p class="login">Already have an account? <a href="login">Login</a></p>
+            <p class="login-link">Already have an account? <a href="/login">Login</a></p>
         </div>
 
-        <div class="second-content container">
+        <!-- Second page content -->
+        <div class="second-content container" style="display: none;">
             <h1>Let's Get Acquainted!</h1>
             <p>Enter your password and start learning.</p>
             <input type="text" name="name" placeholder="Name" class="input-field" required>
             <input type="password" name="password" class="input-field" placeholder="Enter your password" required>
+           
             <button type="submit" class="button">Sign Up</button>
         </div>
     </form>
 
     <script>
        function showSecondPage() {
-        var email = document.getElementsByClassName('useremail').value;
+        var email = document.getElementById('email').value;
         if (email === "") {
             alert("Please enter your email address.");
             return false;
@@ -178,8 +50,7 @@
         document.querySelector('.content').style.display = 'none';
         document.querySelector('.second-content').style.display = 'block';
     }
-
     </script>
-  
+
 </body>
 </html>
