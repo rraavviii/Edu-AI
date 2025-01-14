@@ -27,19 +27,5 @@
     "nodemailer": "^6.9.14",
     "nodemon": "^3.1.7",
     "Router": "^2.1.0"
-  },
-  "engines": {
-  "node": ">=14.x"
-},
-  "builds": [
-    {
-      "src": "app.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    { "src": "/(.*)", "dest": "/app.js" }
-  ]
-
-
-}
+  }
+  
